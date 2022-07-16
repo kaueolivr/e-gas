@@ -6,7 +6,7 @@ const express = require("express")
 // Configure app, cors and port
 const app = express()
 const corsOptions = { origin: "http://localhost:8081" }
-const port = process.env.port || 3000
+const port = process.env.PORT || 5000
 
 // Relates cors and bodyParser with app 
 app.use(cors(corsOptions))
@@ -23,7 +23,7 @@ app.get("/", (request, response) => {
     response.json({ message: "Hello World." })
 })
 
-//' Set port (app is listening for requests)
+// Set port (app is listening for requests)
 app.listen(port, () => {
     console.log(`Server is running on port ${port}.`)
 })
