@@ -18,7 +18,12 @@ const verifyToken = (request, response, next) => {
             response.status(401).send("Unauthorized!")
             return
         }
-        // Set user id, decripted from jwt, as a property of the request
+        // Set user id, decripted from jwt, as a property of the request, if the user exists
+        result = await pool.query("SELECT * FROM users WHERE id = $1", [decoded.id])
+        if (result.rowCount == 0) {
+            response.status(401).send("The user used for authentication does not exist.")
+            return
+        }
         request.userId = decoded.id
         next()
     })
