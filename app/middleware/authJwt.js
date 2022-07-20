@@ -3,7 +3,7 @@ const config = require("../config/auth.config.js")
 const pool = require("../models/index.js")
 
 // Verify the token authenticity
-const verifyToken = (request, response, next) => {
+const verifyToken = async (request, response, next) => {
     // Token is in x-access-token reader
     let token = request.headers["x-access-token"]
     // Check if token is provided
