@@ -17,7 +17,17 @@ const createCylinder = async (request, response) => {
 const registerData = async (request, response) => {
     try {
         let data = request.body
-        result = (await pool.query("INSERT INTO cylinders_records (date, device_id, type, value, cylinder_id) VALUES ('now', $1, $2, $3, $4) RETURNING cylinder_id", [data.deviceId, data.type, data.value, data.cylinderId])).rows[0]
+        if (data.type.toLowerCase() != "weight" && data.type.toLowerCase() != "pressure") {
+            response.status(400).send("Register type invalid.")
+            return
+        }
+        result = (await pool.query("INSERT INTO cylinders_records (date, device_id, type, value, cylinder_id) VALUES ('now', $1, $2, $3, $4) RETURNING cylinder_id", [data.deviceId, data.type.toLowerCase(), data.value, data.cylinderId])).rows[0]
+        if (data.type.toLowerCase() == "weight") {
+            await pool.query("UPDATE cylinders SET updated_at = 'now', weight_device_id = $1 WHERE id = $2", [data.deviceId, data.cylinderId])
+        }
+        else {
+            await pool.query("UPDATE cylinders SET updated_at = 'now', pressure_device_id = $1 WHERE id = $2", [data.deviceId, data.cylinderId])
+        }
         response.status(200).send(`ID ${result.cylinder_id} cylinder data sent.`)
     }
     catch (error) {
