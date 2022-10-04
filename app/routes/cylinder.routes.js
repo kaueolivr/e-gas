@@ -11,8 +11,8 @@ module.exports = function (app) {
     app.post("/api/cylinder/create", [authJwt.verifyToken], controller.createCylinder)
 
     // Verify the token authenticity and check if the user has access (authorization)
-    app.post("/api/cylinder/register", [authJwt.verifyToken, authJwt.hasAccess], controller.registerData)
+    app.post("/api/cylinder/register/:id", [authJwt.verifyToken, authJwt.hasAccess], controller.registerData)
     app.get("/api/cylinder/:id", [authJwt.verifyToken, authJwt.hasAccess], controller.cylinderDashboard)
-    app.put("/api/cylinder/update", [authJwt.verifyToken, authJwt.hasAccess], controller.updateCylinderName)
-    app.delete("/api/cylinder/delete", [authJwt.verifyToken, authJwt.hasAccess], controller.deleteCylinder)
+    app.put("/api/cylinder/update/:id", [authJwt.verifyToken, authJwt.hasAccess], controller.updateCylinderName)
+    app.delete("/api/cylinder/delete/:id", [authJwt.verifyToken, authJwt.hasAccess], controller.deleteCylinder)
 }
