@@ -21,12 +21,12 @@ const registerData = async (request, response) => {
             response.status(400).send("Register type invalid.")
             return
         }
-        result = (await pool.query("INSERT INTO cylinders_records (date, device_id, type, value, cylinder_id) VALUES ('now', $1, $2, $3, $4) RETURNING cylinder_id", [data.deviceId, data.type.toLowerCase(), data.value, data.cylinderId])).rows[0]
+        result = (await pool.query("INSERT INTO cylinders_records (date, device_id, type, value, cylinder_id) VALUES ('now', $1, $2, $3, $4) RETURNING cylinder_id", [data.deviceId, data.type.toLowerCase(), data.value, request.params.id])).rows[0]
         if (data.type.toLowerCase() == "weight") {
-            await pool.query("UPDATE cylinders SET updated_at = 'now', weight_device_id = $1 WHERE id = $2", [data.deviceId, data.cylinderId])
+            await pool.query("UPDATE cylinders SET updated_at = 'now', weight_device_id = $1 WHERE id = $2", [data.deviceId, request.params.id])
         }
         else {
-            await pool.query("UPDATE cylinders SET updated_at = 'now', pressure_device_id = $1 WHERE id = $2", [data.deviceId, data.cylinderId])
+            await pool.query("UPDATE cylinders SET updated_at = 'now', pressure_device_id = $1 WHERE id = $2", [data.deviceId, request.params.id])
         }
         response.status(200).send(`ID ${result.cylinder_id} cylinder data sent.`)
     }
@@ -39,7 +39,7 @@ const registerData = async (request, response) => {
 // Show the data of a cylinder
 const cylinderDashboard = async (request, response) => {
     try {
-        const cylinderId = request.body.cylinderId
+        const cylinderId = request.params.id
         let cylinder = (await pool.query("SELECT * FROM cylinders WHERE id = $1", [cylinderId])).rows[0]
         let records = (await pool.query("SELECT * FROM cylinders_records WHERE cylinder_id = $1", [cylinderId])).rows
         response.send({ cylinder: cylinder, records: records})
@@ -53,7 +53,7 @@ const cylinderDashboard = async (request, response) => {
 // Change the name of a cylinder
 const updateCylinderName = async (request, response) => {
     try {
-        let cylinderName = (await pool.query("UPDATE cylinders SET name = $1, updated_at = 'now' WHERE id = $2 RETURNING name", [request.body.newCylinderName, request.body.cylinderId])).rows[0].name
+        let cylinderName = (await pool.query("UPDATE cylinders SET name = $1, updated_at = 'now' WHERE id = $2 RETURNING name", [request.body.newCylinderName, request.params.id])).rows[0].name
         response.status(200).send(`Cylinder name updated to ${cylinderName}.`)
     }
     catch (error) {
@@ -65,7 +65,7 @@ const updateCylinderName = async (request, response) => {
 // Delete a cylinder
 const deleteCylinder = async (request, response) => {
     try {
-        await pool.query("DELETE FROM cylinders WHERE id = $1", [request.body.cylinderId])
+        await pool.query("DELETE FROM cylinders WHERE id = $1", [request.params.id])
         response.status(200).send("Cylinder deleted.")
     }
     catch (error) {
