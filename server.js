@@ -5,11 +5,10 @@ const express = require("express")
 
 // Configure app, cors and port
 const app = express()
-const corsOptions = { origin: "http://localhost:8081" }
 const port = process.env.PORT || 5000
 
 // Relates cors and bodyParser with app 
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 

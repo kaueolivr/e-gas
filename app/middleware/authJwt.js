@@ -21,10 +21,10 @@ const verifyToken = async (request, response, next) => {
         return decoded
     })
     
-    // Set user id, decripted from jwt, as a property of the request, if the user exists
-    result = await pool.query("SELECT * FROM users WHERE id = $1", [decodedJwt.id])
+    // Set user id, decripted from jwt, as a property of the request, if the user exists and the password used in login is correct
+    result = await pool.query("SELECT * FROM users WHERE id = $1 and password = $2", [decodedJwt.id, decodedJwt.password])
     if (result.rowCount == 0) {
-        response.status(401).send("The user used for authentication does not exist.")
+        response.status(401).send("The user used for authentication does not exist or the password is incorrect.")
         return
     }
     request.userId = decodedJwt.id
@@ -35,7 +35,7 @@ const verifyToken = async (request, response, next) => {
 const hasAccess = async (request, response, next) => {
     try {
         // Check in user-cylinder relation at the users_cylinders table
-        result = (await pool.query("SELECT * FROM users_cylinders WHERE user_id = $1 AND cylinder_id = $2", [request.userId, request.body.cylinderId])).rowCount
+        result = (await pool.query("SELECT * FROM users_cylinders WHERE user_id = $1 AND cylinder_id = $2", [request.userId, request.params.id])).rowCount
         if (result == 0) {
             response.status(403).send("You do not have access to this cylinder.")
             return

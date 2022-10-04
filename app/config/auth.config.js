@@ -1,5 +1,5 @@
 // Require dotenv to read .env file
-require("dotenv/config");
+require("dotenv/config")
 
 // Configurations to create JWT
 module.exports = {

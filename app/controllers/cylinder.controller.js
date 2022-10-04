@@ -9,7 +9,7 @@ const createCylinder = async (request, response) => {
     }
     catch (error) {
         response.status(500).send("An error has occurred.")
-        throw error
+        console.log(error)
     }
 }
 
@@ -32,7 +32,7 @@ const registerData = async (request, response) => {
     }
     catch (error) {
         response.status(500).send("An error has occurred.")
-        throw error
+        console.log(error)
     }
 }
 
@@ -46,7 +46,7 @@ const cylinderDashboard = async (request, response) => {
     }
     catch (error) {
         response.status(500).send("An error has occurred.")
-        throw error
+        console.log(error)
     }
 }
 
@@ -58,7 +58,7 @@ const updateCylinderName = async (request, response) => {
     }
     catch (error) {
         response.status(500).send("An error has occurred.")
-        throw error
+        console.log(error)
     }
 }
 
@@ -70,7 +70,7 @@ const deleteCylinder = async (request, response) => {
     }
     catch (error) {
         response.status(500).send("An error has occurred.")
-        throw error
+        console.log(error)
     }
 }
 
