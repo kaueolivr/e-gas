@@ -7,7 +7,7 @@ const updateUsernameOrEmailOrPassword = async (request, response) => {
         // Update username
         if (request.body.newUsername) {
             let username = (await pool.query("UPDATE users SET username = $1, updated_at = 'now' WHERE id = $2", [request.body.newUsername, request.userId])).rows[0].username
-            response.status(200).send(`Username changed to ${username}.`)
+            response.status(200).send(`Username changed.`)
         }
         // Update email
         else if (request.body.newEmail) {

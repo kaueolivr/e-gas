@@ -74,7 +74,7 @@ const forgotPassword = async (request, response) => {
         let token = jwt.sign({ id: user.id, email: user.email }, user.password + "-" + user.created_at)
 
         // Link to reset password (include the user id and token)
-        let link = "http://localhost:5000/api/auth/resetpassword/" + user.id + "/" + token
+        let link = request.protocol + "://" + request.get("host") + "/api/auth/resetpassword/" + user.id + "/" + token
 
         // Send email
         let transporter = nodemailer.createTransport({
@@ -94,10 +94,12 @@ const forgotPassword = async (request, response) => {
 
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
+                response.status(500).send("An error has occurred.")
                 console.log(error)
             }
             else {
-                console.log("Email sent: " + info.response)
+                response.status(200).json("Email sent.")
+                // console.log("Email sent: " + info.response)
             }
         })
 
