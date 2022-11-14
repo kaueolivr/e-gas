@@ -98,8 +98,7 @@ const forgotPassword = async (request, response) => {
                 console.log(error)
             }
             else {
-                response.status(200).json("Email sent.")
-                // console.log("Email sent: " + info.response)
+                response.status(200).send("Email sent.")
             }
         })
 
