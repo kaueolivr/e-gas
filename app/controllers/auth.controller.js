@@ -47,7 +47,7 @@ const signIn = async (request, response) => {
             userCylinders.push("CYLINDER_" + cylinders.rows[i].cylinder_id)
         }
 
-        let data = { id: user.id, username: user.username, email: user.email, cylinders: userCylinders, accessToken: token }
+        let data = { authenticated: true, id: user.id, username: user.username, email: user.email, creationData: user.created_at, cylinders: userCylinders, accessToken: token }
         response.status(200).json(data)
     }
     catch (error) {
