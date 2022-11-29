@@ -11,8 +11,25 @@
     <header>
         <img src="images/logo_egas.svg" class="logo"alt="logo">
     </header>
-  <div id="btn_div">
-
+  <div class="flex-container">
+    <div  class = 'flex-child' id="btn_div"></div>
+    <div class = 'flex-child' id = "modal_btn"><button id="cylinderCreateButton" onclick="document.getElementById('cylinderCreateModal').style.display='block'">Criar botijão de gás</button></div>
+  </div>
+  <div id="cylinderCreateModal" class="modal">
+    <span onclick="document.getElementById('cylinderCreateModal').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <form id="cylinderForm">
+        <div class="container">
+            <h1>Create New Cylinder</h1>
+            <p>Please fill in this form to create a cylinder.</p>
+            <hr>
+            <label for="cylinderName"><strong>Nome do botijão</strong></label>
+            <input id="cylinderName" type="text" placeholder="Digite o nome do botijão" name="cylinderName" required>
+            <div class="clearfix">
+                <button type="button" onclick="cancelbtn()" class="form_btn">Cancel</button>
+                <button type="submit" class="form_btn" id="submit_btn">Criar</button>
+            </div>
+        </div>
+      </form>
   </div>
 </body>
 <script src="javascript/cylinders.js"></script>

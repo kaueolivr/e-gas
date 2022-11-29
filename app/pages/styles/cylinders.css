@@ -19,6 +19,16 @@
     font-weight: light;
 }
 
+h1{
+    font-family: 'Louis George Cafe', sans-serif;
+    background-color: #2c2c34;
+}
+
+p{
+    font-family: 'Louis George Cafe', sans-serif;
+    background-color: #2c2c34;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -33,6 +43,11 @@ header {
     justify-content: center;
     align-items: center;
     padding: 30px 10%;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: column;
 }
 
 button {
@@ -67,10 +82,175 @@ button:hover{
     background-color: transparent;
 }
 
+#cylinderCreateButton{
+    font-weight: normal;
+    width: 200px;
+    height: 40px;
+    background-color: rgba(80,64,153,1);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+#cylinderCreateButton:hover{
+    background-color: rgba(80,64,153,0.8);
+}
+
+/*modal create new cylinder*/
+#modal_btn{
+    background-color: transparent;
+}
+
+.modal {
+    display: none;  /*remains hidden until the user interacts with the sing-up button */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: #2c2c34;
+    padding-top: 50px;
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.form_btn {
+    background-color: rgba(80,64,153,1);
+    font-weight: bold;
+    font-size: 13px;
+    color: #dddee1;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease 0s;
+}
+
+.form_btn:hover {
+    background-color: rgba(80,64,153,0.8);
+}
+
+#submit_btn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: rgba(151, 78, 194, 1);
+}
+
+#submit_btn:hover {
+    background-color: rgba(151, 78, 194, 0.8);
+}
+
+strong{
+    font-family: 'Louis George Cafe', sans-serif;
+    background-color: #2c2c34;
+}
+
+label{
+    background-color: #2c2c34;
+}
+
+form {
+    width: 60%;
+    margin: auto;
+    margin-top: 5%;
+    border: 3px solid rgba(221, 222, 225, 0.5);
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px rgba(80,64,153,0.4) ;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 3px solid rgba(221, 222, 225, 0.5);
+    box-sizing: border-box;
+    background-color: #2c2c34;
+    font-family: 'Louis George Café', sans-serif;
+    font-size: 15px;
+    color: #dddee1;
+    transition: 0.2s;
+    outline: none;
+}
+
+/*when user interact with inputs*/
+input[type=text]:focus, input[type=password]:focus {
+    border: 3px solid rgba(221, 222, 225, 0.9);
+}
+
+/*style placeholders of inputs*/
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(221, 222, 225, 0.8);
+}
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(221, 222, 225, 0.8);
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(221, 222, 225, 0.8);
+}
+
+#cylinderForm {
+    background-color: #dddee1;
+    margin: 5% auto 15% auto;
+    border: 3px solid rgba(221, 222, 225, 0.5);
+    width: 70%;
+}
+
+.container {
+    padding: 16px;
+    border-radius: 20px;
+    font-family: 'Louis George Cafe', sans-serif;
+    color: #dddee1;
+    background-color: #2c2c34;
+}
+
+hr {
+    border: 1px solid #dddee1;
+    margin-bottom: 25px;
+}
+   
+  /* close modal div */
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #dddee1;
+    background-color:transparent;
+  }
+  
+.close:hover,
+  .close:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+.clearfix{
+    background-color: #2c2c34;
+}
+  
+  /* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 @media screen and (min-width:1201px){
     #btn_div {
         margin-left: 45%;
         margin-top: 5%; 
+    }
+
+    #modal_btn{
+        margin-left: 45%;
+        margin-top: 20%; 
     }
 }
 
@@ -79,11 +259,18 @@ button:hover{
         margin-left: 43%;
         margin-top: 8%; 
     }
+    #modal_btn{
+        margin-left: 43%;
+        margin-top: 50%; 
+    }
 }
 
 
 @media screen and (max-width:870px) {
     #btn_div {
+        margin-left: 41%;
+    }
+    #modal_btn{
         margin-left: 41%;
     }
 }
@@ -92,5 +279,9 @@ button:hover{
     #btn_div {
         margin-left: 29%;
         margin-top: 9%; 
+    }
+    #modal_btn{
+        margin-left: 29%;
+        margin-top: 60%; 
     }
 }
