@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'Louis George Cafe';
+    src: url('/fonts/Louis George Cafe.ttf') format('truetype');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Louis George Cafe';
+    src: url('/fonts/Louis George Cafe Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Louis George Cafe';
+    src: url('/fonts/Louis George Cafe Italic.ttf') format('truetype');
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Louis George Cafe';
+    src: url('/fonts/Louis George Cafe Light.ttf') format('truetype');
+    font-weight: light;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #212226;
+
+}
+
+li, a, button {
+    font-family: 'Louis George Cafe', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #2c2c34;
+    color: #dddee1;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    background-color: #2c2c34;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+.logo{
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.nav_links{
+    list-style: none;
+    background-color: #2c2c34;
+}
+
+.nav_links li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a{
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover{
+    color: #504099;
+    transition: all 0.3s ease 0s;
+}
+
+.contact{
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: rgba(80,64,153,1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.contact:hover{
+    background-color: rgba(80,64,153,0.8);
+
+}
+
+#charts{
+    width: 100px;
+    height: 100px;
+}
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-gás</title>
+  <link rel="stylesheet" href="styles/login.css">
+</head>
+
+<body>
+
+  <div class="imgcontainer">
+    <img src="images/egas_logoimg.png" alt="Avatar" class="avatar">
+  </div>
+  <form id="loginForm">
+  <div class="container">
+    <label for="username"><strong>Usuário</strong></label>
+    <input id="username" type="text" placeholder="Insira o nome de usuário" name="username" required>
+
+    <label for="password"><strong>Senha</strong></label>
+    <input id="password" type="password" placeholder="Insira a senha" name="password" required>
+    <input type="checkbox" onclick="showPSW()">
+    <label>Mostrar senha</label>
+
+    <button type="submit">Login</button>
+
+    <button id="signupbtn" type="button" onclick="document.getElementById('signup').style.display='block'" class="signupbtn">Criar Conta</button>
+    <span class="forgotpsw">Esqueceu a <a href="forgotpsw.html">senha</a>?</span>
+  </div>
+</form>
+
+<div id="signup" class="modal">
+  <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="singup-form" id="signupForm">
+    <div class="container">
+      <h1>Criar conta</h1>
+      <p>Por favor, preencha este formulário para criar uma conta.</p>
+      <hr>
+      <label for="user"><strong>Nome de usuário</strong></label>
+      <input type="text" id="user" placeholder="Insira o nome de usuário" name="user" required>
+
+      <label for="email"><strong>Email</strong></label>
+      <input type="text" id="email" placeholder="Insira o email" name="email" required>
+
+      <label for="psw"><strong>Senha</strong></label>
+      <input type="password" id="new_psw" placeholder="Insira a senha" name="psw" required>
+      <input type="checkbox" onclick="showPSW_signup()" id="signup_psw">
+      <label>Mostrar senha</label>
+      <br>
+      <label for="psw-repeat"><strong>Repita a senha</strong></label>
+      <input type="password" id="psw-repeat" placeholder="Repita a senha" name="psw-repeat" required>
+      
+      <div class="clearfix">
+        <button type="button" onclick="cancelbtn()" class="cancelbtn">Cancelar</button>
+        <button type="submit" class="signupbtn">Criar Conta</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+<script src="javascript/login.js"></script>
+</html>

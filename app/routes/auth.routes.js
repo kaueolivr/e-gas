@@ -10,9 +10,10 @@ module.exports = function (app) {
         )
         next()
     })
+
     app.post("/api/user/signup", [verifySignUp.checkDuplicateUsernameOrEmail], controller.signUp) // Check duplicate username or email to create an user
     app.post("/api/auth/signin", controller.signIn)
     app.post("/api/auth/forgotpassword", controller.forgotPassword)
     app.get("/api/auth/resetpassword/:id/:token", controller.loadResetPasswordForm)
-    app.post("/api/auth/resetpassword/:id/:token", controller.resetPassword)
+    app.post("/api/auth/resetpassword/:id/", controller.resetPassword)
 }

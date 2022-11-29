@@ -110,7 +110,7 @@ const forgotPassword = async (request, response) => {
 }
 
 const loadResetPasswordForm = async (request, response) => {
-    // Load form page
+    response.sendFile(__dirname.replace("controllers", "/views/newpsw.html"))
 }
 
 // Reset password after email link is opened
