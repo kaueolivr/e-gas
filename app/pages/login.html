@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-gás</title>
+  <link rel="stylesheet" href="styles/login.css">
+</head>
+
+<body>
+
+  <div class="imgcontainer">
+    <img src="images/egas_logoimg.png" alt="Avatar" class="avatar">
+  </div>
+  <form id="loginForm">
+  <div class="container">
+    <label for="username"><strong>Username</strong></label>
+    <input id="username" type="text" placeholder="Enter Username" name="username" required>
+
+    <label for="password"><strong>Password</strong></label>
+    <input id="password" type="password" placeholder="Enter Password" name="password" required>
+    <input type="checkbox" onclick="showPSW()">
+    <label>Show Password</label>
+
+    <button type="submit">Login</button>
+
+    <button id="signupbtn" type="button" onclick="document.getElementById('signup').style.display='block'" class="signupbtn">Sign Up</button>
+    <span class="forgotpsw">Forgot <a href="forgotpsw.html">password?</a></span>
+  </div>
+</form>
+
+<div id="signup" class="modal">
+  <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="singup-form" id="signupForm">
+    <div class="container">
+      <h1>Sign Up</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <label for="user"><strong>Username</strong></label>
+      <input type="text" id="user" placeholder="Enter Username" name="user" required>
+
+      <label for="email"><strong>Email</strong></label>
+      <input type="text" id="email" placeholder="Enter Email" name="email" required>
+
+      <label for="psw"><strong>Password</strong></label>
+      <input type="password" id="new_psw" placeholder="Enter Password" name="psw" required>
+      <input type="checkbox" onclick="showPSW_signup()" id="signup_psw">
+      <label>Show Password</label>
+      <br>
+      <label for="psw-repeat"><strong>Repeat Password</strong></label>
+      <input type="password" id="psw-repeat" placeholder="Repeat Password" name="psw-repeat" required>
+      
+      <div class="clearfix">
+        <button type="button" onclick="cancelbtn()" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+<script src="javascript/login.js"></script>
+</html>

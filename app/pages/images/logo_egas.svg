@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="117" height="45" viewBox="0 0 117 45">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 58.333px;
+        fill: #dddee1;
+        text-anchor: middle;
+        font-family: "Agency FB";
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <text id="E-GAS" class="cls-1" x="58.5" y="45"><tspan x="58.5">E-GAS</tspan></text>
+</svg>

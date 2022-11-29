@@ -1,0 +1,224 @@
+@font-face {
+    font-family: 'Louis George Cafe';
+    src: url('/fonts/Louis George Cafe.ttf') format('truetype');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Louis George Cafe';
+    src: url('/fonts/Louis George Cafe Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Louis George Cafe';
+    src: url('/fonts/Louis George Cafe Italic.ttf') format('truetype');
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Louis George Cafe';
+    src: url('/fonts/Louis George Cafe Light.ttf') format('truetype');
+    font-weight: light;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #212226;
+
+}
+
+li, a, button {
+    font-family: 'Louis George Cafe', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #2c2c34;
+    color: #dddee1;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    background-color: #2c2c34;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+.logo{
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.nav_links{
+    list-style: none;
+    background-color: #2c2c34;
+}
+
+.nav_links li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a{
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover{
+    color: #504099;
+    transition: all 0.3s ease 0s;
+}
+
+.contact{
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: rgba(80,64,153,1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.contact:hover{
+    background-color: rgba(80,64,153,0.8);
+
+}
+
+
+
+.flex-child{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    margin-top: 7%;
+    padding: auto;
+    border: auto;
+    align-items: center;
+    background-color: #2c2c34;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px rgba(80,64,153,0.4) ;
+}
+
+.flex-child:first-child{
+    box-shadow: -3px 3px 3px rgba(80,64,153,0.4) ;
+}
+
+
+.auto_gas{
+    display: block;
+    margin-top: auto;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #2c2c34;
+    max-width: 100%;
+    height: auto;
+}
+
+.indication{
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    padding: auto;
+    border: 0px;
+    border-color: transparent;
+    color:#dddee1;
+    background-color: #2c2c34;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: 20px;
+}
+
+
+#gas_welcome{
+    text-align: left;
+    margin-left: 15px;
+    padding: 20px;
+    color:#dddee1;
+    background-color: #2c2c34;
+    border-radius: 15px;
+    font-family: "Louis George Cafe", sans-serif;
+    font-size: 50px;
+}
+
+#lower{
+    background-color: #2c2c34;
+}
+
+#gas_duration{
+    text-align: left;
+    margin-left: 15px;
+    padding: 20px;
+    color:#dddee1;
+    background-color: #2c2c34;
+    font-family: "Louis George Cafe", sans-serif;
+}
+
+#pressure_indication{
+    text-align: left;
+    margin-left: 15px;
+    padding: 20px;
+    color:#dddee1;
+    background-color: #2c2c34;
+    font-family: "Louis George Cafe", sans-serif;
+}
+
+@media screen and (min-width:1300px){
+    .flex-container{
+        display: flex;
+    }
+    .flex-child{
+        width:  40%;
+        margin-left: 4%;
+        margin-right: 5%;
+    }
+    #gas_welcome{
+        font-size: 50px;
+    }
+    #welcome_low{
+        font-size: 30px;
+    }
+    #gas_duration{
+        font-size: 30px;
+    }
+    #pressure_indication{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width:1299px) {
+    .flex-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .flex-child{
+        width:  70%;
+    }
+    #gas_welcome{
+        font-size: 30px;
+    }
+    #welcome_low{
+        font-size: 30px;
+    }
+    #gas_duration{
+        font-size: 30px;
+    }
+    #pressure_indication{
+        font-size: 30px;
+    }  
+}
+
+@media screen and (max-width:630px) {
+    .indication{
+        font-size: 15px;
+    }
+    #gas_welcome{
+        font-size: 18px;
+    }
+    #welcome_low{
+        font-size: 18px;
+    }
+    #gas_duration{
+        font-size: 18px;
+    }
+    #pressure_indication{
+        font-size: 18px;
+    }  
+}
