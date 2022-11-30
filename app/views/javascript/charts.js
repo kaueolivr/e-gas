@@ -4,6 +4,11 @@ window.addEventListener("load", function () {
     }
 })
 
+function logoff(){
+    sessionStorage.clear()
+    window.location.href = window.location.origin+"/login.html"
+}
+
 let cylinder_id = sessionStorage.getItem("cylinder_id")
 
 const token_header = new Headers({

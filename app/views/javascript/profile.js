@@ -12,6 +12,11 @@ window.addEventListener("load", function () {
     }
 })
 
+function logoff(){
+    sessionStorage.clear()
+    window.location.href = window.location.origin+"/login.html"
+}
+
 const token_header = new Headers({
     'Content-Type': 'application/json',
     'x-access-token': sessionStorage.getItem("accessToken")
@@ -37,22 +42,5 @@ function user_data(){
      email.innerHTML = sessionStorage.getItem("email")
      created.innerHTML = created_data
 }
-
-form.addEventListener("submit", async function(event) {
-    event.preventDefault()
-
-    let data = { 
-        name: cylinderName.value 
-    }
-    const response = await fetch("https://e-gas.onrender.com/api/cylinder/create", {
-        method: "POST",
-        headers: token_header,
-        body: JSON.stringify(data)
-    })
-
-    const answer = await response.json()
-    console.log(answer)
-})
-
 
 user_data()

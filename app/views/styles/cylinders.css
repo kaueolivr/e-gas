@@ -1,21 +1,21 @@
 @font-face {
     font-family: 'Louis George Cafe';
-    src: url('/fonts/Louis George Cafe.ttf') format('truetype');
+    src: url('/app/views/fonts/Louis\ George\ Cafe.ttf') format('truetype');
     font-weight: normal;
 }
 @font-face {
     font-family: 'Louis George Cafe';
-    src: url('/fonts/Louis George Cafe Bold.ttf') format('truetype');
+    src: url('fonts/Louis George Cafe Bold.ttf') format('truetype');
     font-weight: bold;
 }
 @font-face {
     font-family: 'Louis George Cafe';
-    src: url('/fonts/Louis George Cafe Italic.ttf') format('truetype');
+    src: url('fonts/Louis George Cafe Italic.ttf') format('truetype');
     font-style: italic;
 }
 @font-face {
     font-family: 'Louis George Cafe';
-    src: url('/fonts/Louis George Cafe Light.ttf') format('truetype');
+    src: url('fonts/Louis George Cafe Light.ttf') format('truetype');
     font-weight: light;
 }
 
@@ -100,6 +100,10 @@ button:hover{
 /*modal create new cylinder*/
 #modal_btn{
     background-color: transparent;
+}
+
+.logo{
+    background-color: #2c2c34;
 }
 
 .modal {
@@ -282,6 +286,6 @@ hr {
     }
     #modal_btn{
         margin-left: 29%;
-        margin-top: 60%; 
+        margin-top: 100%; 
     }
 }

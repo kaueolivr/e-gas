@@ -12,6 +12,11 @@ window.addEventListener("load", function () {
     }
 })
 
+function logoff(){
+    sessionStorage.clear()
+    window.location.href = window.location.origin+"/login.html"
+}
+
 const token_header = new Headers({
     'Content-Type': 'application/json',
     'x-access-token': sessionStorage.getItem("accessToken")
@@ -36,14 +41,31 @@ async function gas_indication(){
         headers: token_header
     })
     
+    
     const data = await response.json()
-    const len = Object.keys(data.records).length
+    let weight_data = []
+    let pressure_data = []
+
+    data.records.forEach(function(value){
+        if (value.type == "weight") {
+            weight_data.push(value)
+        }
+        else {
+            pressure_data.push(value)
+        }
+    })
+
+    const len_weight = weight_data.length
+    const len_pressure = pressure_data.length
+    
 
     // set indication text
-    indication.innerHTML = `Você ainda possui ${data.records[len - 1].value} kg de gás`
+    indication.innerHTML = `Você ainda possui ${weight_data[len_weight - 1].value} kg de gás`
+    pressure.innerHTML = `Indicador de pressão: ${pressure_data[len_pressure - 1].value} kPa`
 
     //set image indication
-    if (data.records[len_weight-1].value == 13){
+    if (weight_data[len_weight - 1].value == 13){
+        console.log(1)
         const source_645px = document.getElementById('645px')
         const source_1300px = document.getElementById('1300px')
         const img_100 = document.querySelector("#img")
@@ -52,7 +74,8 @@ async function gas_indication(){
         source_element(source_645px, 645, "images/fullgas_100px.png")
         source_element(source_1300px, 1300,"images/fullgas_250px.png")
     }
-    else if (data.records[len_weight-1].value <= 12.99 && data.records[len_weight-1].value >= 9.75 ){
+    else if (weight_data[len_weight - 1].value <= 12.99 && weight_data[len_weight - 1].value >= 9.75 ){
+        console.log(2)
         const source_645px = document.getElementById('645px')
         const source_1300px = document.getElementById('1300px')
         const img_75 = document.querySelector("#img")
@@ -62,7 +85,8 @@ async function gas_indication(){
         source_element(source_1300px, 1300,"images/75gas_250px.png")
 
     }
-    else if (data.records[len_weight-1].value < 9.75 && data.records[len_weight-1].value >= 6.5 ){
+    else if (weight_data[len_weight - 1].value < 9.75 && weight_data[len_weight - 1].value >= 6.5 ){
+        console.log(3)
         const source_645px = document.getElementById('645px')
         const source_1300px = document.getElementById('1300px')
         const img_50 = document.querySelector("#img")
@@ -72,7 +96,8 @@ async function gas_indication(){
         source_element(source_1300px, 1300,"images/50gas_250px.png")
 
     }
-    else if (data.records[len_weight-1].value < 6.5 && data.records[len_weight-1].value){
+    else if (weight_data[len_weight - 1].value < 6.5 && weight_data[len_weight - 1].value > 0){
+        console.log(4)
         const source_645px = document.getElementById('645px')
         const source_1300px = document.getElementById('1300px')
         const img_25 = document.querySelector("#img")
@@ -81,7 +106,8 @@ async function gas_indication(){
         source_element(source_645px, 645, "images/25gas_100px.png")
         source_element(source_1300px, 1300,"images/25gas_250px.png")
     }
-    else if (data.records[len_weight-1].value == 0){
+    else if (weight_data[len_weight - 1].value == 0){
+        console.log(5)
         const source_645px = document.getElementById('645px')
         const source_1300px = document.getElementById('1300px')
         const img_00 = document.querySelector("#img")

@@ -43,6 +43,20 @@ header {
     padding: 30px 10%;
 }
 
+.logoff{
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: rgba(80,64,153,1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.logoff:hover{
+    background-color: red;
+}
+
 .logo{
     cursor: pointer;
     margin-right: auto;
