@@ -4,19 +4,83 @@ window.addEventListener("load", function () {
     }
 })
 
-const ctx = document.getElementById('myChart').getContext('2d');
+let cylinder_id = sessionStorage.getItem("cylinder_id")
 
-var ChartDaily = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ["01h","02h", "03h", "04h", "05", "06h", "07h", "08h", "09h", "10h", "11h", "12h", "13h", "14h", "15h", "16h", '17h', '18h', '19h', '20h', '21h', '22h', '23h', '24h'],
-        datasets: [{
-            label: "CONSUMO DE GÁS DIÁRIO",
-            data: [5,20,10,5,4,3,8,9,17,6,15,14,3,16,19,27,28],
-            borderWidth: 6,
-            borderColor: 'rgba(80,64,153,0.8)',
-            backgroundColor: 'transparent',
-        }]
-
-    }
+const token_header = new Headers({
+    'Content-Type': 'application/json',
+    'x-access-token': sessionStorage.getItem("accessToken")
 })
+
+async function charts(){
+    const response = await fetch(`https://e-gas.onrender.com/api/cylinder/${cylinder_id}`, {
+        method: "GET",
+        headers: token_header
+    })
+    
+    
+    const anwser = await response.json()
+    let weight_data = []
+    let pressure_data = []
+
+    anwser.records.forEach(function(value){
+        if (value.type == "weight") {
+            weight_data.push(value)
+        }
+        else {
+            pressure_data.push(value)
+        }
+    })
+
+    const len_weight = weight_data.length
+    const len_pressure = pressure_data.length
+
+    console.log(weight_data)
+    console.log(pressure_data)
+
+    let weightchart_data = []
+
+    weight_data.forEach(function(value){
+        let time = new Date((value.date))
+        let n_value = Number(value.value)
+        let data_obj = {
+            x: `${time.getFullYear()}-${time.getMonth()}-${time.getDate()} ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`,
+            y: n_value
+        }
+        weightchart_data.push(data_obj)
+    })
+    
+    console.log(weightchart_data)
+
+
+
+    const data = {
+            datasets: [{
+                label:'Weight',
+                data: weightchart_data
+            }]
+    }
+    const config = {
+        type: 'line',
+        data,
+        options:{
+            scales:{
+                x:{
+                    type: 'time',
+                    time:{
+                        format: "HH:MM:SS",
+                    }
+                },
+                y:{
+                    beginAtZero: true
+                }
+            }
+        }
+    
+    }
+
+    const myChart = new Chart(document.getElementById('weight_chart'), config)
+    
+
+}
+
+charts()
