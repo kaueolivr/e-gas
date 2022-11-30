@@ -43,52 +43,52 @@ async function gas_indication(){
     indication.innerHTML = `Você ainda possui ${data.records[len - 1].value} kg de gás`
 
     //set image indication
-    if (data.records[len-1].value == 13){
+    if (data.records[len_weight-1].value == 13){
         const source_645px = document.getElementById('645px')
         const source_1300px = document.getElementById('1300px')
         const img_100 = document.querySelector("#img")
 
-        img_element(img_100,"images/teste100_890px.png")
-        source_element(source_645px, 645, "images/teste100_100px.png")
-        source_element(source_1300px, 1300,"images/teste100_250px.png")
+        img_element(img_100,"images/fullgas_500px.png")
+        source_element(source_645px, 645, "images/fullgas_100px.png")
+        source_element(source_1300px, 1300,"images/fullgas_250px.png")
     }
-    else if (data.records[len-1].value <= 12.99 && data.records[len-1].value >= 9.75 ){
+    else if (data.records[len_weight-1].value <= 12.99 && data.records[len_weight-1].value >= 9.75 ){
         const source_645px = document.getElementById('645px')
         const source_1300px = document.getElementById('1300px')
-        const img_100 = document.querySelector("#img")
+        const img_75 = document.querySelector("#img")
 
-        img_element(img_75,"images/teste75_500px.png")
-        source_element(source_645px, 645, "images/teste75_100px.png")
-        source_element(source_1300px, 1300,"images/teste75_250px.png")
-
-    }
-    else if (data.records[len-1].value < 9.75 && data.records[len-1].value >= 6.5 ){
-        const source_645px = document.getElementById('645px')
-        const source_1300px = document.getElementById('1300px')
-        const img_100 = document.querySelector("#img")
-
-        img_element(img_50,"images/teste50_500px.png")
-        source_element(source_645px, 645, "images/teste50_100px.png")
-        source_element(source_1300px, 1300,"images/teste50_250px.png")
+        img_element(img_75,"images/75gas_500px.png")
+        source_element(source_645px, 645, "images/75gas_100px.png")
+        source_element(source_1300px, 1300,"images/75gas_250px.png")
 
     }
-    else if (data.records[len-1].value < 6.5 && data.records[len-1].value){
+    else if (data.records[len_weight-1].value < 9.75 && data.records[len_weight-1].value >= 6.5 ){
         const source_645px = document.getElementById('645px')
         const source_1300px = document.getElementById('1300px')
-        const img_100 = document.querySelector("#img")
+        const img_50 = document.querySelector("#img")
 
-        img_element(img_50,"images/teste25_500px.png")
-        source_element(source_645px, 645, "images/teste25_100px.png")
-        source_element(source_1300px, 1300,"images/teste25_250px.png")
+        img_element(img_50,"images/50gas_500px.png")
+        source_element(source_645px, 645, "images/50gas_100px.png")
+        source_element(source_1300px, 1300,"images/50gas_250px.png")
+
     }
-    else if (data.records[len-1].value == 0){
+    else if (data.records[len_weight-1].value < 6.5 && data.records[len_weight-1].value){
         const source_645px = document.getElementById('645px')
         const source_1300px = document.getElementById('1300px')
-        const img_100 = document.querySelector("#img")
+        const img_25 = document.querySelector("#img")
 
-        img_element(img_00,"images/teste00_500px.png")
-        source_element(source_645px, 645, "images/teste00_100px.png")
-        source_element(source_1300px, 1300,"images/teste00_250px.png")
+        img_element(img_25,"images/25gas_500px.png")
+        source_element(source_645px, 645, "images/25gas_100px.png")
+        source_element(source_1300px, 1300,"images/25gas_250px.png")
+    }
+    else if (data.records[len_weight-1].value == 0){
+        const source_645px = document.getElementById('645px')
+        const source_1300px = document.getElementById('1300px')
+        const img_00 = document.querySelector("#img")
+
+        img_element(img_00,"images/0gas_500px.png")
+        source_element(source_645px, 645, "images/0gas_100px.png")
+        source_element(source_1300px, 1300,"images/0gas_250px.png")
     }
 }
 
