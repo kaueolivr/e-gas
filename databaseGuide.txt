@@ -1,0 +1,54 @@
+users:
+CREATE TABLE users (
+    id serial PRIMARY KEY,
+    username varchar(255),
+    email varchar (255),
+    password varchar(255),
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+cylinders:
+CREATE TABLE cylinders (
+    id serial PRIMARY KEY,
+    name varchar(255),
+    weight_device_id varchar(255),
+    pressure_device_id varchar(255),
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+cylinders_records:
+CREATE TABLE cylinders_records (
+    date timestamp with time zone NOT NULL,
+    device_id varchar(255) NOT NULL,
+    type varchar(255) NOT NULL,
+    value float NOT NULL,
+    cylinder_id int NOT NULL
+);
+ALTER TABLE cylinders_records
+ADD CONSTRAINT fk_cylinder_id
+FOREIGN KEY (cylinder_id)
+REFERENCES cylinders (id)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+users_cylinders:
+CREATE TABLE users_cylinders (
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL,
+    user_id int NOT NULL,
+    cylinder_id int NOT NULL 
+);
+ALTER TABLE users_cylinders
+ADD CONSTRAINT fk_user_id
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+ALTER TABLE users_cylinders
+ADD CONSTRAINT fk_cylinder_id
+FOREIGN KEY (cylinder_id)
+REFERENCES cylinders(id)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
